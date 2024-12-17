@@ -134,4 +134,10 @@ public class UtilisateurService {
         Optional<Utilisateur> utilisateurOptional = utilisateurRepository.findById(id);
         return utilisateurOptional.orElse(null); // Returns null if user not found
     }
+    public UtilisateurDTO getUtilisateurByEmail(String email) {
+        return utilisateurRepository.findByEmail(email)
+                .map(utilisateur -> modelMapper.map(utilisateur, UtilisateurDTO.class))
+                .orElse(null);
+    }
+
 }

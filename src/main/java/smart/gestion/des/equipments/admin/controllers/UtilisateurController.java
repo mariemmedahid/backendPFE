@@ -43,11 +43,18 @@ public class UtilisateurController {
         return utilisateur != null ? ResponseEntity.ok(utilisateur) : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/email/{email}")
+    public ResponseEntity<UtilisateurDTO> getUtilisateurByEmail(@PathVariable String email) {
+        UtilisateurDTO utilisateur = utilisateurService.getUtilisateurByEmail(email);
+        return utilisateur != null ? ResponseEntity.ok(utilisateur) : ResponseEntity.notFound().build();
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<UtilisateurDTO> updateUtilisateur(@PathVariable Long id, @RequestBody UtilisateurDTO utilisateurDTO) {
         UtilisateurDTO updatedUtilisateur = utilisateurService.updateUtilisateur(id, utilisateurDTO);
         return updatedUtilisateur != null ? ResponseEntity.ok(updatedUtilisateur) : ResponseEntity.notFound().build();
     }
+
     @CrossOrigin(origins = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUtilisateur(@PathVariable Long id) {
@@ -75,4 +82,3 @@ public class UtilisateurController {
         return ResponseEntity.ok(userDTO);
     }
 }
-

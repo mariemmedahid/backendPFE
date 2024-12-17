@@ -40,6 +40,7 @@ public class NotificationService {
     private FirebaseMessagingService firebaseMessagingService;
     public NotificationDTO createNotif(NotificationDTO notificationDTO) throws ExecutionException, FirebaseMessagingException, InterruptedException {
         // Map AssignmentDTO to Assignment
+        System.out.println("nottif "+notificationDTO.toString());
         Notification notif = modelMapper.map(notificationDTO, Notification.class);
 
         // Fetch and set the utilisateur (assuming utilisateur is mapped properly in AssignmentDTO)
